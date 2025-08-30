@@ -10,7 +10,7 @@ exports.transcribeAndTranslate = async (audioPath) => {
     '-m', 'whisper', // запускаем whisper как python модуль
     audioPath,
     '--model', 'base',
-    '--language', 'en',
+    '--language', 'es',
     '--output_format', 'txt',
     '--output_dir', path.dirname(audioPath)
   ];
