@@ -45,8 +45,8 @@ const AudioRecorder: React.FC = () => {
     setLoading(true);
     setTranslated(null);
     try {
-      const result = await sendAudioForTranslate(audioBlob);
-      setTranslated(result.translated);
+  const result = await sendAudioForTranslate(audioBlob);
+  setTranslated(result.translated); // только перевод
     } catch (e) {
       setTranslated('Ошибка при переводе');
     } finally {
@@ -73,7 +73,7 @@ const AudioRecorder: React.FC = () => {
         {loading && <div>Переводим...</div>}
         {!loading && translated && (
           <div style={{ marginTop: 8 }}>
-            <b>Перевод:</b> {translated}
+            <b>Перевод на испанский:</b> {translated}
           </div>
         )}
       </div>
