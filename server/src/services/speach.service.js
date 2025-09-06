@@ -79,23 +79,16 @@ exports.transcribeAndTranslate = async (audioPath) => {
     }
   }
 
-  // 3. Переводим текст на испанский через LibreTranslate
+  // 3. Переводим текст на испанский через MyMemory API (бесплатно, без ключа)
   let translated = text;
   try {
     console.log('Отправляем на перевод:', { text, detectedLang });
-    const res = await fetch('https://libretranslate.de/translate', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        q: text,
-        source: detectedLang || 'auto',
-        target: 'es',
-        format: 'text'
-      })
-    });
+    // detectedLang может быть 'auto', но MyMemory требует ISO-код, например 'ru'. Если auto, ставим 'ru' по умолчанию
+    let sourceLang = detectedLang && detectedLang !== 'auto' ? detectedLang : 'ru';
+    const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=${sourceLang}|es`);
     if (res.ok) {
       const data = await res.json();
-      translated = data.translatedText || text;
+      translated = data.responseData.translatedText || text;
     } else {
       console.error('Ошибка перевода:', res.status, await res.text());
     }
