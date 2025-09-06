@@ -2,6 +2,11 @@
 Привет!
 Эта программа реализует функционал перевода речи на испанский язык
 
+0) Установите Python (если не установлен):
+	- Перейдите на https://www.python.org/downloads/
+	- Скачайте и установите версию Python 3.8–3.11 для вашей системы
+	- При установке на Windows обязательно отметьте "Add Python to PATH"
+
 1) Склонируйте себе через git clone (https/ssh ключ)
 
 Необязательно: cоздайте на сервере .env в корне и заполните по примеру из .env_example
@@ -24,6 +29,11 @@ ____________________
 Hello!
 
 This program implements the functionality for translating speech into Spanish.
+
+Install Python (if not installed):
+- Go to https://www.python.org/downloads/
+- Download and install Python version 3.8–3.11 for your system
+- During installation on Windows, make sure to check the box "Add Python to PATH"
 
 Setup:
 - Clone the repository using git clone (via HTTPS or SSH).
